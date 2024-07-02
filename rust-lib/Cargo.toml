@@ -1,0 +1,15 @@
+[package]
+name = "native-file-dialog"
+authors = ["Ben Landon"]
+version = "0.1.0"
+edition = "2021"
+
+[lib]
+crate-type = ["cdylib"]
+
+[dependencies]
+libc = "0.2.155"
+rfd = { version = "0.14.1", default-features = false, features = ["gtk3"] }
+
+[build-dependencies]
+csbindgen = "1.9.1"
