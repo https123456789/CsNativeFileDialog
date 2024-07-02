@@ -1,3 +1,4 @@
 {
-    "name": "CsNativeFileDialog"
+    "name": "CsNativeFileDialog",
+    "allowUnsafeCode": true
 }
