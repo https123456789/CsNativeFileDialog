@@ -15,7 +15,7 @@ fn main() {
     // TODO: add windows support
     if !cfg!(target_os = "windows") {
         Command::new("sed")
-            .args(["-i", "-e", "s/byte\\* pick_file/PathHandle pick_file/", "../CsNativeFileDialog/Generated/NativeMethods.g.cs"])
+            .args(["-i", "-e", "s/byte\\* pick_file/PathHandle pick_file/", "../CsNativeFileDialog/Runtime/Generated/NativeMethods.g.cs"])
             .output()
             .expect("Failed to execute process");
     }
