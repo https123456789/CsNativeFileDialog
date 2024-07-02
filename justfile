@@ -8,7 +8,7 @@ default:
 
 [private]
 lib:
-    cd rust-lib && cargo build
+    cd rust-lib~ && cargo build
 
 [doc("Build in normal mode. See unity-build for Unity support")]
 build: lib
@@ -17,5 +17,9 @@ build: lib
 [doc("Build the project but following Unity conventions")]
 unity-build assets-dir: lib
     mkdir -p {{assets-dir}}/Plugins/{{target_os}}/{{target_arch}}
-    cp rust-lib/target/debug/libnative_file_dialog.so \
+    cp rust-lib~/target/debug/libnative_file_dialog.so \
         {{assets-dir}}/Plugins/{{target_os}}/{{target_arch}}
+
+clean:
+    cd rust-lib~ && cargo clean
+    rm CsNativeFileDialog/Runtime/Generated -rf
