@@ -9,7 +9,7 @@ fn main() {
         .csharp_class_name("FileDialog")
         .csharp_namespace("CsNativeFileDialog")
         .csharp_use_function_pointer(false)
-        .generate_csharp_file("../CsNativeFileDialog/Generated/NativeMethods.g.cs")
+        .generate_csharp_file("../CsNativeFileDialog/Runtime/Generated/NativeMethods.g.cs")
         .unwrap();
 
     // TODO: add windows support

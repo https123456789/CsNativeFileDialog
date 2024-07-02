@@ -1,0 +1,9 @@
+{
+    "name": "org.b0x207.csnativefiledialog",
+    "version": "0.0.1",
+    "descrion": "A C# library that provides bindings for opening a native file open/save dialog window.",
+    "displayName": "CsNativeFileDialog",
+    "unity": "2022.3",
+    "unityRelease": "13f1",
+    "hideInEditor": false
+}
