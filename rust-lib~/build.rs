@@ -1,5 +1,3 @@
-use std::process::Command;
-
 fn main() {
     csbindgen::Builder::default()
         .input_extern_file("src/lib.rs")
@@ -12,11 +10,10 @@ fn main() {
         .generate_csharp_file("../CsNativeFileDialog/Runtime/Generated/NativeMethods.g.cs")
         .unwrap();
 
-    // TODO: add windows support
-    if !cfg!(target_os = "windows") {
-        Command::new("sed")
-            .args(["-i", "-e", "s/byte\\* pick_file/PathHandle pick_file/", "../CsNativeFileDialog/Runtime/Generated/NativeMethods.g.cs"])
-            .output()
-            .expect("Failed to execute process");
-    }
+    // Correct the generated signature for `pick_file`
+    let file_contents = std::fs::read_to_string("../CsNativeFileDialog/Runtime/Generated/NativeMethods.g.cs")
+        .expect("The generated bindings file should be readable");
+    let new_contents = file_contents.replacen("byte* pick_file(", "PathHandle pick_file(", 1);
+    std::fs::write("../CsNativeFileDialog/Runtime/Generated/NativeMethods.g.cs", new_contents)
+        .expect("The generated bindings file should be writable");
 }
